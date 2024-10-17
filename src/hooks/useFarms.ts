@@ -1,5 +1,5 @@
 import { getFarms } from "@/services/farmService"
-import { FarmType } from "@/types/Projects"
+import { FarmType } from "@/types/Farm"
 import { useEffect, useState } from "react"
 
 export const useFarms = () => {
