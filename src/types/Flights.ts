@@ -1,6 +1,6 @@
 export interface FlightInterface {
   id: number;
-  date: string;
-  projectId: number;
-  services: Array<{id: number}>;
+  name: string;
+  farmId: number;
+  services: Array<{ id: number; name: string }>; // Agora suporta múltiplos serviços
 }

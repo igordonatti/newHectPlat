@@ -5,10 +5,12 @@ const FlightModal = ({
   isOpen,
   onClose,
   onFlightAdded,
+  farmId,
 }: {
   isOpen: boolean;
   onClose: () => void;
   onFlightAdded: () => void;
+  farmId: number; // Recebendo o farmId como prop
 }) => {
   const [flightName, setFlightName] = useState('');
   const [images, setImages] = useState<File[]>([]);
@@ -16,7 +18,17 @@ const FlightModal = ({
   const handleAddFlight = () => {
     const storedFlights = localStorage.getItem('flights');
     const flights = storedFlights ? JSON.parse(storedFlights) : [];
-    const newFlight = { id: Date.now(), name: flightName, flights: [], userId: 1, images };
+    
+    // Cria o novo voo com farmId associado
+    const newFlight = { 
+      id: Date.now(), 
+      name: flightName, 
+      flights: [], 
+      userId: 1, 
+      images, 
+      farmId  // Associa o voo à fazenda correta
+    };
+    
     flights.push(newFlight);
     localStorage.setItem('flights', JSON.stringify(flights));
     onFlightAdded(); // Atualiza a lista de fazendas
